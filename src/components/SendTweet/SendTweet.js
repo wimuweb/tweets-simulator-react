@@ -36,7 +36,8 @@ export default function SendTweet(props) {
       setToastProps({
         
         open:true,
-        text:'WARNING: Todos los campos son obligatorios'
+        text:'WARNING: Todos los campos son obligatorios',
+        severity:'error'
       });
 
     }
@@ -48,7 +49,8 @@ export default function SendTweet(props) {
       setToastProps({
         
         open:true,
-        text:'SUCCES: Tweet enviado correctamente.'
+        text:'SUCCES: Tweet enviado correctamente.',
+        severity:'success'
       });
       closeModal();
     }

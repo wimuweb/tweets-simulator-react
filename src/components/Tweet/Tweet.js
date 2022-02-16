@@ -8,7 +8,7 @@ export default function Tweet(props) {
     const {tweet:{name,tweet,time},index, deleteTweet} = props;
 
   return (
-    <Card className='tweet'>
+    <Card className='tweet' elevation={4}>
         <CardContent>
 <div className='tweet__header'>
 

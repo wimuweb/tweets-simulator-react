@@ -1,5 +1,6 @@
 import { Container, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
+import CustomizedSnackbar from "./components/CustomizedSnackbar/CustomizedSnackbar";
 import Header from "./components/Header/Header";
 import ListTweets from "./components/ListTweets/ListTweets";
 import SendTweet from "./components/SendTweet/SendTweet";
@@ -10,8 +11,10 @@ import {TWEETS_STORAGE} from './utils/contants';
 function App() {
   const [toastProps, setToastProps] = useState({
     open: false,
-    text:null
+    text:null,
+    severity:null
   })
+  
   const [allTweets, setAllTweets] = useState([]);
   const [reloadTweets, setReloadTweets] = useState(false);
 
@@ -33,17 +36,8 @@ function App() {
     <Container className="tweets-simulator" maxWidth={false}>
       <Header/>
       <SendTweet setToastProps={setToastProps} allTweets={allTweets}/>
-      <Snackbar
-        anchorOrigin={{
-          vertical:'top',
-          horizontal:'right'
-          
-        }}
-        open={toastProps.open}
-        autoHideDuration={2000}
-        message={<span id={"message-id"}>{toastProps.text}</span>}
-        />
-        <ListTweets allTweets={allTweets} deleteTweet={deleteTweet}/>
+      <CustomizedSnackbar toastProps={toastProps} setToastProps={setToastProps}/>
+      <ListTweets allTweets={allTweets} deleteTweet={deleteTweet}/>
     </Container>
   );
 }
